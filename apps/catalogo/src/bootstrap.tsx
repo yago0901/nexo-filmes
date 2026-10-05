@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import CatalogoRoutes from './Routes';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {
-  const root = ReactDOM.createRoot(rootEl);
-  root.render(
+  ReactDOM.createRoot(rootEl).render(
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/filmes" replace />} />
+          <Route path="/filmes/*" element={<CatalogoRoutes />} />
+        </Routes>
+      </BrowserRouter>
     </React.StrictMode>,
   );
 }

@@ -1,10 +1,25 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams, useLocation, Link } from 'react-router-dom';
 
-export default function CatalogoRoutes() {
+function Detalhe() {
+  const { id } = useParams();
+  return (
+    <section>
+      <h1>Detalhe do filme {id}</h1>
+      <Link to="/filmes">Voltar ao catálogo</Link>
+    </section>
+  );
+}
+
+function NaoCasou() {
+  const { pathname } = useLocation();
+  return <p>Nenhuma rota do remote filme casou com: {pathname}</p>;
+}
+
+export default function FilmeRoutes() {
   return (
     <Routes>
-      <Route index element={<h1>Filme (remote)</h1>} />
-      <Route path=":id" element={<h1>Detalhe</h1>} />
+      <Route path=":id" element={<Detalhe />} />
+      <Route path="*" element={<NaoCasou />} />
     </Routes>
   );
 }

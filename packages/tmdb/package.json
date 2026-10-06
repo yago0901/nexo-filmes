@@ -1,0 +1,17 @@
+{
+  "name": "@nexo/tmdb",
+  "version": "0.0.0",
+  "private": true,
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nexo/shared-types": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.3"
+  }
+}

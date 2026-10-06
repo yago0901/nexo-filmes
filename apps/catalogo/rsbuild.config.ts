@@ -1,8 +1,10 @@
-import { defineConfig } from '@rsbuild/core';
+import { resolve } from 'node:path';
+import { defineConfig, loadEnv } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginModuleFederation } from '@module-federation/rsbuild-plugin';
 
-// Docs: https://rsbuild.rs/config/
+const { publicVars } = loadEnv({ cwd: resolve(process.cwd(), '../..') });
+
 export default defineConfig({
   plugins: [
     pluginReact(),
@@ -16,6 +18,9 @@ export default defineConfig({
       },
     }),
   ],
+  source: {
+    define: publicVars,
+  },
   server: {
     port: 3001,
     strictPort: true,

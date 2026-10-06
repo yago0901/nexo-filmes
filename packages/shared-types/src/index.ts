@@ -3,7 +3,6 @@ export interface Genero {
   nome: string;
 }
 
-
 export interface FilmeResumo {
   id: number;
   titulo: string;
@@ -51,6 +50,7 @@ export interface Avaliacao {
 export interface NexoEventos {
   'nexo:favoritos-alterados': { filmeId: number; favoritado: boolean };
   'nexo:avaliacao-alterada': { filmeId: number };
+  'nexo:favorito-falhou': { filmeId: number; titulo: string };
 }
 
 export type NomeEvento = keyof NexoEventos;

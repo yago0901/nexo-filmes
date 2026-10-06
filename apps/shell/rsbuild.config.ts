@@ -6,6 +6,8 @@ import { pluginReact } from '@rsbuild/plugin-react';
 const { publicVars } = loadEnv({ cwd: resolve(process.cwd(), '../..') });
 
 export default defineConfig({
+  name: 'shell',
+  dts: false,
   plugins: [
     pluginReact(),
     pluginModuleFederation({

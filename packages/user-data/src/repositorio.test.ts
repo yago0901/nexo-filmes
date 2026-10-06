@@ -1,27 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { Avaliacao, Favorito, FilmeResumo } from '@nexo/shared-types';
-import type { Armazenamento } from './armazenamento';
+import { criarArmazenamentoEmMemoria, criarFilme } from './auxiliares-de-teste';
 import { CONFIGURACAO_DESLIGADA } from './configuracao';
 import { criarRepositorioUsuario, ErroEscritaSimulado } from './repositorio';
-
-function criarArmazenamentoEmMemoria(): Armazenamento {
-  let favoritos: Favorito[] = [];
-  let avaliacoes: Avaliacao[] = [];
-  return {
-    lerFavoritos: () => favoritos,
-    gravarFavoritos: (novos) => {
-      favoritos = novos;
-    },
-    lerAvaliacoes: () => avaliacoes,
-    gravarAvaliacoes: (novas) => {
-      avaliacoes = novas;
-    },
-  };
-}
-
-function criarFilme(id: number): FilmeResumo {
-  return { id, titulo: `Filme ${id}`, ano: 2020, posterUrl: null, generos: ['Drama'] };
-}
 
 const CONFIGURACAO_COM_FALHA = { ...CONFIGURACAO_DESLIGADA, falhaAtiva: true };
 

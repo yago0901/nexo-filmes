@@ -12,6 +12,7 @@
   "dependencies": {
     "@module-federation/enhanced": "^2.9.2",
     "@nexo/shared-types": "workspace:*",
+    "@nexo/user-data": "workspace:*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.4"

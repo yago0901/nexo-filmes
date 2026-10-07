@@ -1,3 +1,14 @@
+declare global {
+  interface ImportMetaEnv {
+    readonly PUBLIC_REPO_DELAY?: string;
+    readonly PUBLIC_REPO_FAIL?: string;
+  }
+
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
+}
+
 export const ATRASO_MINIMO_MS = 300;
 export const ATRASO_MAXIMO_MS = 1500;
 

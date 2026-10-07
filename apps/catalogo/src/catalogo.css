@@ -1,0 +1,93 @@
+.catalogo {
+  padding: 1rem;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.filtros__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filtros__aviso {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.grade-filmes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.grade-filmes[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+.cartao-filme {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cartao-filme__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cartao-filme__link:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+.cartao-filme__titulo {
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+}
+
+.cartao-filme__meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.cartao-filme__generos {
+  margin: 0;
+  font-size: 0.8125rem;
+  opacity: 0.8;
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #1f2937;
+}
+
+.poster--ausente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

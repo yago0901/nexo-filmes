@@ -1,36 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import { clienteTmdb, mensagemDeErro } from '@nexo/tmdb';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { Route, Routes } from 'react-router-dom';
+import { criarClienteDeConsultas } from './cliente-de-consultas';
+import { PaginaCatalogo } from './PaginaCatalogo';
+import './catalogo.css';
 
-function Lista() {
-  const [titulos, setTitulos] = useState<string[]>([]);
-  const [erro, setErro] = useState<string | null>(null);
-
-  useEffect(() => {
-    clienteTmdb
-      .listarFilmes({ pagina: 1 })
-      .then((pagina) => setTitulos(pagina.itens.map((filme) => `${filme.titulo} (${filme.ano})`)))
-      .catch((falha: unknown) => setErro(mensagemDeErro(falha)));
-  }, []);
-
-  return (
-    <section>
-      <h1>Catálogo (remote)</h1>
-      {erro && <p role="alert">{erro}</p>}
-      <ul>
-        {titulos.map((titulo) => (
-          <li key={titulo}>{titulo}</li>
-        ))}
-      </ul>
-      <Link to="/filme/550">Abrir filme 550</Link>
-    </section>
-  );
-}
+const clienteDeConsultas = criarClienteDeConsultas();
 
 export default function CatalogoRoutes() {
   return (
-    <Routes>
-      <Route index element={<Lista />} />
-    </Routes>
+    <QueryClientProvider client={clienteDeConsultas}>
+      <Routes>
+        <Route index element={<PaginaCatalogo />} />
+      </Routes>
+    </QueryClientProvider>
   );
 }

@@ -1,0 +1,46 @@
+.pagina-filme {
+  padding: 1rem;
+}
+
+.botao-voltar {
+  margin-bottom: 1rem;
+}
+
+.detalhe-filme {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .detalhe-filme {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+  }
+}
+
+.detalhe-filme__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+}
+
+.detalhe-filme__elenco {
+  padding-left: 1.25rem;
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #1f2937;
+}
+
+.poster--ausente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

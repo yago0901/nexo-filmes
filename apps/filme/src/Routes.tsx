@@ -1,25 +1,19 @@
-import { Routes, Route, useParams, useLocation, Link } from 'react-router-dom';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { Route, Routes } from 'react-router-dom';
+import { criarClienteDeConsultas } from './cliente-de-consultas';
+import { FilmeNaoEncontrado } from './FilmeNaoEncontrado';
+import { PaginaFilme } from './PaginaFilme';
+import './filme.css';
 
-function Detalhe() {
-  const { id } = useParams();
-  return (
-    <section>
-      <h1>Detalhe do filme {id}</h1>
-      <Link to="/filmes">Voltar ao catálogo</Link>
-    </section>
-  );
-}
-
-function NaoCasou() {
-  const { pathname } = useLocation();
-  return <p>Nenhuma rota do remote filme casou com: {pathname}</p>;
-}
+const clienteDeConsultas = criarClienteDeConsultas();
 
 export default function FilmeRoutes() {
   return (
-    <Routes>
-      <Route path=":id" element={<Detalhe />} />
-      <Route path="*" element={<NaoCasou />} />
-    </Routes>
+    <QueryClientProvider client={clienteDeConsultas}>
+      <Routes>
+        <Route path=":id" element={<PaginaFilme />} />
+        <Route path="*" element={<FilmeNaoEncontrado />} />
+      </Routes>
+    </QueryClientProvider>
   );
 }

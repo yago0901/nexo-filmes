@@ -24,13 +24,16 @@ export default function Painel() {
   return (
     <section className="painel" aria-labelledby="titulo-painel">
       <h1 id="titulo-painel">Painel</h1>
+
       {comErro && (
         <EstadoErro
           mensagem="Não foi possível carregar os dados do painel."
           aoTentarNovamente={recarregar}
         />
       )}
+
       {!comErro && !pronto && <EstadoCarregando texto="Carregando painel…" />}
+
       {!comErro && pronto && (
         <dl className="painel__indicadores">
           <Indicador rotulo="Favoritos" valor={String(estatisticas.totalFavoritos)} />

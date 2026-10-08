@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { mensagemDeErro } from '@nexo/tmdb';
-import { EstadoCarregando, EstadoErro, EstadoVazio } from '@nexo/ui';
+import { EsqueletoGrade, EstadoErro, EstadoVazio } from '@nexo/ui';
 import { BarraDeFiltros } from './BarraDeFiltros';
 import { CartaoFilme } from './CartaoFilme';
 import { useFilmes, useGeneros } from './dados';
@@ -30,22 +30,32 @@ export function PaginaCatalogo() {
     window.scrollTo({ top: 0 });
   }, [filtros.pagina]);
 
+  const primeiraCarga = filmes.isPending && !filmes.data;
+  const temResultados = filmes.isSuccess && filmes.data.itens.length > 0;
+
   return (
     <section className="catalogo" aria-labelledby="titulo-catalogo">
-      <h1 id="titulo-catalogo">Catálogo de filmes</h1>
+      <header className="catalogo__topo">
+        <h1 id="titulo-catalogo">Catálogo de filmes</h1>
+        <p className="catalogo__subtitulo">Explore os filmes mais populares do momento.</p>
+      </header>
+
       <BarraDeFiltros
         filtros={filtros}
         generos={generos.data ?? []}
         aoAlterarTermo={(termo) => atualizar((atuais) => comTermo(atuais, termo), true)}
         aoAlterarGenero={(generoId) => atualizar((atuais) => comGenero(atuais, generoId))}
       />
-      {filmes.isPending && <EstadoCarregando texto="Carregando filmes…" />}
+
+      {primeiraCarga && <EsqueletoGrade quantidade={12} texto="Carregando filmes…" />}
+
       {filmes.isError && (
         <EstadoErro
           mensagem={mensagemDeErro(filmes.error)}
           aoTentarNovamente={() => void filmes.refetch()}
         />
       )}
+
       {filmes.isSuccess && filmes.data.itens.length === 0 && (
         <EstadoVazio
           titulo="Nenhum filme encontrado"
@@ -56,7 +66,8 @@ export function PaginaCatalogo() {
           }
         />
       )}
-      {filmes.isSuccess && filmes.data.itens.length > 0 && (
+
+      {temResultados && (
         <>
           <ul className="grade-filmes" aria-busy={filmes.isPlaceholderData}>
             {filmes.data.itens.map((filme) => (

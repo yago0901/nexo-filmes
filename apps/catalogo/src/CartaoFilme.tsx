@@ -10,7 +10,7 @@ export function CartaoFilme({ filme }: CartaoFilmeProps) {
   return (
     <li className="cartao-filme">
       <Link to={`/filme/${filme.id}`} className="cartao-filme__link">
-        <PosterFilme url={filme.posterUrl} titulo={filme.titulo} />
+        <PosterFilme url={filme.posterUrl} titulo={filme.titulo} nota={filme.notaTmdb} />
         <h2 className="cartao-filme__titulo">{filme.titulo}</h2>
       </Link>
       <p className="cartao-filme__meta">

@@ -1,5 +1,14 @@
 .catalogo {
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.catalogo__topo {
+  margin-bottom: 1.5rem;
+}
+
+.catalogo__subtitulo {
+  margin: 0.25rem 0 0;
+  color: var(--cor-texto-suave);
 }
 
 .filtros {
@@ -8,6 +17,10 @@
   gap: 0.75rem;
   align-items: end;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
 }
 
 .filtros__campo {
@@ -20,53 +33,33 @@
   flex-basis: 100%;
   margin: 0;
   font-size: 0.875rem;
+  color: var(--cor-destaque-forte);
 }
 
-.grade-filmes {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-}
-
-.grade-filmes[aria-busy='true'] {
-  opacity: 0.6;
-}
-
-.cartao-filme {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.cartao-filme__link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.cartao-filme__link:focus-visible {
-  outline: 3px solid currentColor;
-  outline-offset: 2px;
-}
+/* A classe .grade-filmes já vem do @nexo/ui (cartao.css).
+   Não redefina aqui para não sobrescrever o design system. */
 
 .cartao-filme__titulo {
-  font-size: 1rem;
-  margin: 0.5rem 0 0;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .cartao-filme__meta {
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  color: var(--cor-texto-suave);
 }
 
 .cartao-filme__generos {
   margin: 0;
-  font-size: 0.8125rem;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  color: var(--cor-texto-suave);
 }
 
 .paginacao {
@@ -74,5 +67,15 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.paginacao button {
+  min-width: 5rem;
+}
+
+.paginacao span {
+  color: var(--cor-texto-suave);
+  font-size: 0.875rem;
 }

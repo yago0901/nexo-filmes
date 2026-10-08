@@ -17,26 +17,32 @@ export default function Favoritos() {
   return (
     <section className="favoritos" aria-labelledby="titulo-favoritos">
       <h1 id="titulo-favoritos">Meus favoritos</h1>
+
       {(status === 'inicial' || status === 'carregando') && (
         <EstadoCarregando texto="Carregando favoritos…" />
       )}
+
       {status === 'erro' && (
         <EstadoErro
           mensagem="Não foi possível carregar seus favoritos."
           aoTentarNovamente={() => void recarregar()}
         />
       )}
+
       {status === 'pronto' && favoritos.length === 0 && (
-        <>
+        <div className="favoritos__vazio">
           <EstadoVazio
             titulo="Você ainda não favoritou nenhum filme"
             descricao="Favorite filmes no catálogo para vê-los aqui."
           />
-          <Link to="/filmes">Explorar o catálogo</Link>
-        </>
+          <Link to="/filmes" className="favoritos__link-catalogo">
+            Explorar o catálogo
+          </Link>
+        </div>
       )}
+
       {status === 'pronto' && favoritos.length > 0 && (
-        <ul className="grade-favoritos">
+        <ul className="grade-filmes">
           {favoritos.map((favorito) => (
             <CartaoFavorito
               key={favorito.filme.id}

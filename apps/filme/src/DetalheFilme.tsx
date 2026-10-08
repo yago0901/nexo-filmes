@@ -1,5 +1,6 @@
 import type { FilmeDetalhe } from '@nexo/shared-types';
 import { BotaoFavorito, formatarAno, formatarDuracao, formatarNota, PosterFilme } from '@nexo/ui';
+import { SecaoAvaliacao } from './SecaoAvaliacao';
 
 interface DetalheFilmeProps {
   filme: FilmeDetalhe;
@@ -34,6 +35,7 @@ export function DetalheFilme({ filme }: DetalheFilmeProps) {
             ))}
           </ul>
         )}
+        <SecaoAvaliacao key={filme.id} filmeId={filme.id} />
       </div>
     </article>
   );

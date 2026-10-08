@@ -11,13 +11,17 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
     "@nexo/shared-types": "workspace:*",
     "@nexo/tmdb": "workspace:*",
     "@nexo/ui": "workspace:*",
+    "@nexo/user-data": "workspace:*",
     "@tanstack/react-query": "^5.104.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.4"
+    "react-hook-form": "^7.89.0",
+    "react-router-dom": "^7.18.4",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@module-federation/rsbuild-plugin": "^2.9.2",

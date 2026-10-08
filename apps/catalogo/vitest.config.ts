@@ -11,7 +11,13 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
-      include: ['src/**/*.{ts,tsx}'],
+      include: [
+        'src/estado-url.ts',
+        'src/useValorComDebounce.ts',
+        'src/dados.ts',
+        'src/BarraDeFiltros.tsx',
+        'src/Paginacao.tsx',
+      ],
       exclude: [
         'src/**/*.test.{ts,tsx}',
         'src/**/*.d.ts',

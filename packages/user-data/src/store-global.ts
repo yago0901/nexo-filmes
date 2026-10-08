@@ -26,3 +26,9 @@ export function obterStoreAvaliacoes(): StoreAvaliacoes {
   alvo.__nexoStoreAvaliacoes = criado;
   return criado;
 }
+
+export function reiniciarStoresGlobais(): void {
+  const alvo = globalThis as GlobalComStores;
+  delete alvo.__nexoStoreFavoritos;
+  delete alvo.__nexoStoreAvaliacoes;
+}

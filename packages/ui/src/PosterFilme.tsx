@@ -1,3 +1,5 @@
+import './poster.css';
+
 interface PosterFilmeProps {
   url: string | null;
   titulo: string;

@@ -21,4 +21,8 @@ export { criarStoreAvaliacoes } from './store-avaliacoes';
 export type { StoreAvaliacoes } from './store-avaliacoes';
 export { criarStoreFavoritos } from './store-favoritos';
 export type { StoreFavoritos } from './store-favoritos';
-export { obterStoreAvaliacoes, obterStoreFavoritos } from './store-global';
+export {
+  obterStoreAvaliacoes,
+  obterStoreFavoritos,
+  reiniciarStoresGlobais,
+} from './store-global';

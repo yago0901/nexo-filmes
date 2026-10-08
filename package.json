@@ -8,7 +8,8 @@
     "build": "pnpm -r build",
     "preview": "pnpm -r --parallel preview",
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "test:coverage": "pnpm -r test:coverage"
   },
   "keywords": [],
   "author": "",

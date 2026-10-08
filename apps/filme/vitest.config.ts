@@ -8,5 +8,20 @@ export default defineConfig({
       PUBLIC_REPO_DELAY: 'false',
       PUBLIC_REPO_FAIL: 'false',
     },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/**/*.test.{ts,tsx}',
+        'src/**/*.d.ts',
+        'src/main.tsx',
+        'src/bootstrap.tsx',
+        'src/index.tsx',
+        'src/configuracao-de-testes.ts',
+        'src/auxiliares-de-teste.ts',
+      ],
+      thresholds: { lines: 70, functions: 70, branches: 70, statements: 70 },
+    },
   },
 });

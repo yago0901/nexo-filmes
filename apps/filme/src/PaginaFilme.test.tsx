@@ -51,7 +51,8 @@ describe('PaginaFilme', () => {
     expect(await screen.findByRole('heading', { name: 'Clube da Luta', level: 1 })).toBeTruthy();
     expect(screen.getByText('2 h 19 min')).toBeTruthy();
     expect(screen.getByText('David Fincher')).toBeTruthy();
-    expect(screen.getByText('Edward Norton — Narrador')).toBeTruthy();
+    expect(screen.getByText('Edward Norton')).toBeTruthy();
+    expect(screen.getByText(/Narrador/)).toBeTruthy();
     expect(clienteTmdb.obterDetalhe).toHaveBeenCalledWith(550);
   });
 

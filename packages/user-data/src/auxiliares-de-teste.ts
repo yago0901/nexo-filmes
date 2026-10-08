@@ -23,3 +23,11 @@ export function criarFilme(id: number): FilmeResumo {
 export function criarFavorito(id: number, favoritadoEm = '2026-10-01T10:00:00.000Z'): Favorito {
   return { filme: criarFilme(id), favoritadoEm };
 }
+
+export function criarAvaliacao(
+  filmeId: number,
+  nota = 8,
+  atualizadaEm = '2026-10-01T10:00:00.000Z',
+): Avaliacao {
+  return { filmeId, nota, comentario: '', atualizadaEm };
+}

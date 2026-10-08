@@ -50,3 +50,34 @@
   margin: 0;
   font-size: 0.875rem;
 }
+
+.painel {
+  padding: 1rem;
+}
+
+.painel__indicadores {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.indicador {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+
+.indicador dt {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.indicador dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}

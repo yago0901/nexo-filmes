@@ -4,9 +4,10 @@ export function criarFavorito(
   id: number,
   titulo = `Filme ${id}`,
   favoritadoEm = '2026-10-01T10:00:00.000Z',
+  generos: string[] = ['Drama'],
 ): Favorito {
   return {
-    filme: { id, titulo, ano: 2020, posterUrl: null, generos: ['Drama'] },
+    filme: { id, titulo, ano: 2020, posterUrl: null, generos },
     favoritadoEm,
   };
 }

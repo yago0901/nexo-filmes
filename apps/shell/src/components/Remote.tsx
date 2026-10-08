@@ -1,5 +1,6 @@
 import { Component, lazy, Suspense, useMemo, useState } from 'react';
 import type { ComponentType, ReactNode } from 'react';
+import { EstadoCarregando, EstadoErro } from '@nexo/ui';
 
 interface BoundaryProps {
   nome: string;
@@ -20,22 +21,27 @@ class Boundary extends Component<BoundaryProps, BoundaryState> {
   }
 
   render() {
-    if (this.state.erro) {
-      const { nome, compacto, onRetry } = this.props;
+    if (!this.state.erro) return this.props.children;
+
+    const { nome, compacto, onRetry } = this.props;
+
+    if (compacto) {
       return (
-        <div role="alert">
-          <p>
-            {compacto
-              ? `${nome} indisponível.`
-              : `Não foi possível carregar a área “${nome}”.`}
-          </p>
+        <div role="alert" className="remote-compacto">
+          <span>{nome} indisponível.</span>
           <button type="button" onClick={onRetry}>
             Tentar novamente
           </button>
         </div>
       );
     }
-    return this.props.children;
+
+    return (
+      <EstadoErro
+        mensagem={`Não foi possível carregar a área “${nome}”.`}
+        aoTentarNovamente={onRetry}
+      />
+    );
   }
 }
 
@@ -47,8 +53,12 @@ interface RemoteProps {
 
 export function Remote({ nome, compacto, carregar }: RemoteProps) {
   const [tentativa, setTentativa] = useState(0);
-
   const Comp = useMemo(() => lazy(carregar), [nome, tentativa]);
+  const fallback = compacto ? (
+    <span className="somente-leitor">Carregando {nome}…</span>
+  ) : (
+    <EstadoCarregando texto={`Carregando ${nome}…`} />
+  );
 
   return (
     <Boundary
@@ -57,7 +67,7 @@ export function Remote({ nome, compacto, carregar }: RemoteProps) {
       compacto={compacto}
       onRetry={() => setTentativa((t) => t + 1)}
     >
-      <Suspense fallback={<p>Carregando {nome}…</p>}>
+      <Suspense fallback={fallback}>
         <Comp />
       </Suspense>
     </Boundary>

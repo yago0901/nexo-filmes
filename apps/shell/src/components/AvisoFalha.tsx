@@ -29,7 +29,7 @@ export function AvisoFalha() {
   }, [aviso]);
 
   return (
-    <div role="alert" aria-live="assertive">
+    <div className="aviso-falha" role="alert" aria-live="assertive">
       {aviso?.texto}
     </div>
   );

@@ -1,14 +1,49 @@
+.poster-moldura {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: var(--cor-superficie);
+  border-radius: var(--raio-medio);
+  box-shadow: var(--sombra-cartao);
+  transition: box-shadow var(--transicao);
+}
+
+.poster-moldura--com-nota::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40%;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent);
+  pointer-events: none;
+}
+
 .poster {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 3;
+  height: 100%;
   object-fit: cover;
-  background: #1f2937;
+  transition: transform 300ms ease;
 }
 
 .poster--ausente {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+}
+
+.selo-nota {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 1;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cor-sobre-nota);
+  background: var(--cor-nota);
+  border-radius: var(--raio-pequeno);
 }

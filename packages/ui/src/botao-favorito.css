@@ -1,0 +1,23 @@
+.botao-favorito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.botao-favorito[aria-pressed='true'] {
+  background: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+  color: var(--cor-sobre-destaque);
+}
+
+.botao-favorito[aria-pressed='true']:hover:not(:disabled) {
+  background: var(--cor-destaque-forte);
+  border-color: var(--cor-destaque-forte);
+  color: var(--cor-sobre-destaque);
+}
+
+.botao-favorito[aria-busy='true'] {
+  cursor: progress;
+}
